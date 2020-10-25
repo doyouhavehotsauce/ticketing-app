@@ -1,0 +1,39 @@
+/* 
+Index
+
+
+Font Controls
+Buttons & Links 
+
+*/
+
+
+
+
+/* font controls*/
+
+.cntr-txt{
+    text-align: center;
+}
+.card-container{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 50px auto;
+    padding: 20px;
+    width: 350px;
+}
+
+.m-top{
+    margin-top: 20px;
+}
+.m-left-1{
+    margin-left: 10px;
+}
+/* buttons & links */
+.secondary-link{
+    display: inline-block;
+    margin-top: 10px;
+}
+.secondary-link:hover{
+    text-decoration: underline;
+}

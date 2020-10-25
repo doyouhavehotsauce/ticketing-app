@@ -1,15 +1,22 @@
 const express = require('express')
 const app = express()
 const bcrypt = require('bcrypt')
-const mongo = require('mongodb')
+//const mongo = require('mongodb')
 
 const users=[]
+
+
+
+
 
 app.set('view-engine', 'ejs')
 
 
 //tells application we want to access the forms inside our methods
 app.use(express.urlencoded({extended: false}))
+//links style sheet to index
+app.use(express.static(__dirname + '/'));
+
 
 app.get('/', (req, res) => {
     res.render('index.ejs')
@@ -18,9 +25,7 @@ app.get('/', (req, res) => {
 
 
 
-app.get('/login', (req, res) => {
-    res.render('login.ejs')
-})
+
 app.post('/login', async (req, res) => {
     const user = users.find(user => user.email = req.body.email)
     if(user === null){
@@ -37,11 +42,17 @@ app.post('/login', async (req, res) => {
     }
 })
 
+
+
+
+
 app.get('/register', (req, res) => {
     res.render('register.ejs')
 })
+
+
 //registers a new user
-app.post('/register', async (req, res) => {
+app.post('/_register', async (req, res) => {
     try{
         const hashedPW = await bcrypt.hash(req.body.password, 10)
         users.push({
@@ -60,6 +71,10 @@ app.post('/register', async (req, res) => {
 
 
 
+//route for main dashboard
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard.ejs')
+})
 
 
 
